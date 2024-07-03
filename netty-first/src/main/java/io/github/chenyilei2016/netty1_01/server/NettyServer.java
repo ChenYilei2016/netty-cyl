@@ -3,6 +3,8 @@ package io.github.chenyilei2016.netty1_01.server;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
@@ -13,8 +15,8 @@ public class NettyServer {
 
     public static void main(String[] args) throws InterruptedException {
 
-        EventLoopGroup parent = new DefaultEventLoop();
-        EventLoopGroup worker = new DefaultEventLoop();
+        EventLoopGroup parent = new NioEventLoopGroup();
+        EventLoopGroup worker = new NioEventLoopGroup();
 
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -23,7 +25,10 @@ public class NettyServer {
                     .option(ChannelOption.SO_BACKLOG,128)
                     .childHandler(new MyChannelInitializer());
 
-            ChannelFuture channelFuture = serverBootstrap.bind(7777).sync();
+            ChannelFuture bind = serverBootstrap.bind(7777);
+            ChannelFuture channelFuture = bind.sync();
+            channelFuture.channel().closeFuture().sync();
+//            channelFuture.channel().closeFuture().sync();
         } finally {
             worker.shutdownGracefully();
             parent.shutdownGracefully();
