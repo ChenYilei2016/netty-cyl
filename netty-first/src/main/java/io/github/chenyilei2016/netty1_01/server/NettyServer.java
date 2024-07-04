@@ -20,9 +20,10 @@ public class NettyServer {
 
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
-            serverBootstrap.group(parent)
+            serverBootstrap
+                    .group(parent, worker)
                     .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG,128)
+                    .option(ChannelOption.SO_BACKLOG, 128)
                     .childHandler(new MyChannelInitializer());
 
             ChannelFuture bind = serverBootstrap.bind(7777);
