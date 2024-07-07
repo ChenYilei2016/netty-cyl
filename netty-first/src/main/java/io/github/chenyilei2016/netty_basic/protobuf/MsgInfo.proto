@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package io.github.chenyilei2016.netty_basic.protobuf;
+
+option java_package = "io.github.chenyilei2016.netty_basic.protobuf";
+option java_multiple_files = true;
+option java_outer_classname = "MsgInfo";
+
+message MsgBody {
+
+  string channelId = 1;
+  string msgInfo = 2;
+
+}

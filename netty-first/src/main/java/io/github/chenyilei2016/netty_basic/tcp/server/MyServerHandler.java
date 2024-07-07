@@ -1,16 +1,8 @@
-package io.github.chenyilei2016.netty1_01.server;
+package io.github.chenyilei2016.netty_basic.tcp.server;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
-
-import java.net.Socket;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Date;
 
 public class MyServerHandler extends ChannelInboundHandlerAdapter {
     @Override

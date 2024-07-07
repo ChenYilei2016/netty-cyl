@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.netty1_01.server;
+package io.github.chenyilei2016.netty_basic.tcp.server;
 
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;

@@ -1,7 +1,6 @@
-package io.github.chenyilei2016.netty1_01.client;
+package io.github.chenyilei2016.netty_basic.tcp.client;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
@@ -31,9 +30,10 @@ public class MyEncoder extends MessageToByteEncoder {
 
         // 加上前后缀区分
 
-        ByteBuf byteBuf = Unpooled.buffer(bytes.length + 2);
+        ByteBuf byteBuf = Unpooled.buffer(bytes.length + 3);
 
         byteBuf.writeBytes(new byte[]{0x02});
+//        byteBuf.writeBytes(new Integer(bytes.length).byteValue());
         byteBuf.writeBytes(bytes);
         byteBuf.writeBytes(new byte[]{0x03});
 

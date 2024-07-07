@@ -1,10 +1,8 @@
-package io.github.chenyilei2016.netty1_01.server;
+package io.github.chenyilei2016.netty_basic.tcp.server;
 
-import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**

@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.netty1_01.client;
+package io.github.chenyilei2016.netty_basic.tcp.client;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

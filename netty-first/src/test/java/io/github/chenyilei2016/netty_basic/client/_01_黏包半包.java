@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.netty1_01.client;
+package io.github.chenyilei2016.netty_basic.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;

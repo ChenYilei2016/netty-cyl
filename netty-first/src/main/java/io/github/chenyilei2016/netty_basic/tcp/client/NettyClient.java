@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.netty1_01.client;
+package io.github.chenyilei2016.netty_basic.tcp.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -12,7 +12,6 @@ import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -46,7 +45,9 @@ public class NettyClient {
                             channel.pipeline().addLast(new StringDecoder(StandardCharsets.UTF_8));
                             // 解码转String，注意调整自己的编码格式GBK、UTF-8
                             channel.pipeline().addLast(new StringEncoder(StandardCharsets.UTF_8));
-                            channel.pipeline().addLast(new MyClientHandler());
+//                            channel.pipeline().addLast(new MyClientHandler());
+                            channel.pipeline().addLast(new MyOutMsgHandler());//消息出站处理器，在Client发送消息时候会触发此处理器
+                            channel.pipeline().addLast(new MyInMsgHandler()); //消息入站处理器
 
 
                         }

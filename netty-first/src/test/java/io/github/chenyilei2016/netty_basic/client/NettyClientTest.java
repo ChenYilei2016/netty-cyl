@@ -1,8 +1,6 @@
-package io.github.chenyilei2016.netty1_01.client;
+package io.github.chenyilei2016.netty_basic.client;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author chenyilei
