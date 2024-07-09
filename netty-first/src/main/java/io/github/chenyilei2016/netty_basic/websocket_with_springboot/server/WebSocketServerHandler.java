@@ -99,6 +99,11 @@ public class WebSocketServerHandler extends ChannelInboundHandlerAdapter {
                 throw new Exception("仅支持文本格式");
             }
 
+            /**
+             * 如果使用websocket的 WebSocketServerProtocolHandler
+             * 前面的消息都不需要我们处理
+             */
+
             String request = ((TextWebSocketFrame) webSocketFrame).text();
             System.out.println("服务端收到：" + request);
 

@@ -15,7 +15,7 @@ import java.net.InetSocketAddress;
 
 /**
  * 可以自己处理websocket的upgrade ,  也可以WebSocketServerProtocolHandler
- * {@link WebSocketServerProtocolHandler}
+ * {@link WebSocketServerProtocolHandler} 这个处理程序为您运行websocket服务器完成了所有繁重的工作。它负责websocket握手以及控制帧（Close、Ping、Pong）的处理
  */
 @Component
 public class WebSocketNettyServer {
