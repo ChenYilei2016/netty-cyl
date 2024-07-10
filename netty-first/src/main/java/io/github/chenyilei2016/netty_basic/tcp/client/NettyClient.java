@@ -1,10 +1,7 @@
 package io.github.chenyilei2016.netty_basic.tcp.client;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -53,7 +50,11 @@ public class NettyClient {
                         }
                     }).connect(host, port);
             connect.sync();
-            connect.channel().closeFuture().sync();
+            Channel channel = connect.channel();
+
+
+
+            channel.closeFuture().sync();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } finally {

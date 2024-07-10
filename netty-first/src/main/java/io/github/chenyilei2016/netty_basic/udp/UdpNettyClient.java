@@ -26,16 +26,19 @@ public class UdpNettyClient {
                                 @Override
                                 protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket packet) throws Exception {
                                     String msg = packet.content().toString(StandardCharsets.UTF_8);
-                                    System.err.println("client 收到 :" +msg);
+                                    System.err.println(Thread.currentThread() + "client 收到 :" +msg);
                                 }
                             });
                         }
                     });
             Channel ch = b.bind(8888).sync().channel();
             //向目标端口发送信息
-            ch.writeAndFlush(new DatagramPacket(
-                    Unpooled.copiedBuffer("我是client , 我发了一个消息", StandardCharsets.UTF_8),
-                    new InetSocketAddress("127.0.0.1", 9999))).sync();
+            for (int i = 0; i < 20; i++) {
+                ch.writeAndFlush(new DatagramPacket(
+                        Unpooled.copiedBuffer("我是client , 我发了一个消息", StandardCharsets.UTF_8),
+                        new InetSocketAddress("127.0.0.1", 9999))).sync();
+            }
+
             ch.closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();
