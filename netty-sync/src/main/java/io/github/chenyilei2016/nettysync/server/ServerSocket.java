@@ -1,6 +1,5 @@
 package io.github.chenyilei2016.nettysync.server;
 
-import io.github.chenyilei2016.netty_basic.tcp.server.MyServerHandler;
 import io.github.chenyilei2016.nettysync.codec.RpcDecoder;
 import io.github.chenyilei2016.nettysync.codec.RpcEncoder;
 import io.github.chenyilei2016.nettysync.msg.Request;
