@@ -1,4 +1,4 @@
-package io.github.chenyilei2016.netty_basic.tcp.server;
+package io.github.chenyilei2016.nettychunkstream;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -7,7 +7,12 @@ import io.netty.channel.socket.SocketChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MyServerHandler2 extends ChannelInboundHandlerAdapter {
+/**
+ * 虫洞栈：https://bugstack.cn
+ * 公众号：bugstack虫洞栈 | 欢迎关注并获取专题&源码
+ * Create by fuzhengwei on 2019
+ */
+public class MyServerHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * 当客户端主动链接服务端的链接后，这个通道就是活跃的了。也就是客户端与服务端建立了通信通道并且可以传输数据
@@ -17,18 +22,12 @@ public class MyServerHandler2 extends ChannelInboundHandlerAdapter {
         SocketChannel channel = (SocketChannel) ctx.channel();
         System.out.println("链接报告开始");
         System.out.println("链接报告信息：有一客户端链接到本服务端");
-        System.out.println("getHostName:" + channel.localAddress().getHostName());
-        System.out.println("getHostString:" + channel.localAddress().getHostString());
+        System.out.println("链接报告IP:" + channel.localAddress().getHostString());
         System.out.println("链接报告Port:" + channel.localAddress().getPort());
-
-        System.out.println("r getHostName:" + channel.remoteAddress().getHostName());
-        System.out.println("r getHostString:" + channel.remoteAddress().getHostString());
-        System.out.println("r 链接报告Port:" + channel.remoteAddress().getPort());
-
         System.out.println("链接报告完毕");
         //通知客户端链接建立成功
         String str = "通知客户端链接建立成功" + " " + new Date() + " " + channel.localAddress().getHostString() + "\r\n";
-        //ctx.writeAndFlush(str);
+        ctx.writeAndFlush(str);
     }
 
     /**
@@ -42,10 +41,10 @@ public class MyServerHandler2 extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         //接收msg消息{与上一章节相比，此处已经不需要自己进行解码}
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " 服务端接收到消息：" + msg);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " 接收到消息：" + msg);
         //通知客户端链消息发送成功
-        String str = "随机数：" + Math.random() * 10 + "\r\n";
-        //ctx.writeAndFlush(str);
+        String str = "服务端收到：" + new Date() + " " + msg + "\r\n";
+        ctx.writeAndFlush(str);
     }
 
     /**
