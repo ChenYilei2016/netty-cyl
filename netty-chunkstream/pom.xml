@@ -18,6 +18,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.37.Final</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.kstyrc</groupId>
             <artifactId>embedded-redis</artifactId>
             <version>0.6</version>
