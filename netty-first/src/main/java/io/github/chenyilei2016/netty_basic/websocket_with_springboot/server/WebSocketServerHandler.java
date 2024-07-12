@@ -18,6 +18,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * 如何 前端添加 header https://apifox.com/apiskills/how-to-add-header-authorization-in-websocket/
+ */
 public class WebSocketServerHandler extends ChannelInboundHandlerAdapter {
     private Logger logger = LoggerFactory.getLogger(WebSocketServerHandler.class);
 
@@ -39,7 +42,7 @@ public class WebSocketServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.err.println(msg);
+        System.err.println("channelRead 前置打印一下消息内容 : " + msg);
         //http
         if (msg instanceof FullHttpRequest) {
 

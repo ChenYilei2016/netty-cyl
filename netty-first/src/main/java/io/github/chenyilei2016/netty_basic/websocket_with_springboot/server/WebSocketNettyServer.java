@@ -37,7 +37,7 @@ public class WebSocketNettyServer {
                         ch.pipeline().addLast("http-codec", new HttpServerCodec());
                         ch.pipeline().addLast("aggregator", new HttpObjectAggregator(65536));
 //                        ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
-//                        ch.pipeline().addLast(new WebSocketServerProtocolHandler("/websocket"));
+                        ch.pipeline().addLast(new WebSocketServerProtocolHandler("/websocket"));
                         ch.pipeline().addLast(new WebSocketServerHandler());
                     }
                 })

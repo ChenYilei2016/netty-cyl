@@ -40,8 +40,15 @@ body{
 <div id="output"></div>
 <script>
 	var socket =null
+	//https://apifox.com/apiskills/how-to-add-header-authorization-in-websocket/
 	function connectWebSocket(){
-		socket = new WebSocket("ws://localhost:8999/websocket");
+		socket = new WebSocket("ws://localhost:8999/websocket?aaa=bbbb");
+
+		socket.addEventListener('open', (event) => {
+			//启动发了条消息...
+			console.log("WebSocket 加头啊: " + event);
+			socket.send('Authorization: Bearer ' + '666');
+		});
 
 		socket.onopen = function(event) {
 			console.log("WebSocket opened: " + event);
